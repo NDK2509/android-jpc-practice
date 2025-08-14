@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.something.ui.layouts.MainLayout
 import com.example.something.ui.navigation.MainNavigation
 import com.example.something.ui.theme.SomethingTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,9 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SomethingTheme {
-                MainLayout {
-                    MainNavigation()
-                }
+                MainNavigation()
             }
         }
     }

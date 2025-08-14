@@ -1,24 +1,23 @@
 package com.example.something.ui.layouts
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.something.ui.theme.DEFAULT_PADDING
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainLayout(
-    content: @Composable () -> Unit = {}
+    topBar: @Composable () -> Unit = {},
+    bottomBar: @Composable () -> Unit = {},
+    content: @Composable () -> Unit
 ) {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("My App") }
-            )
-        }
+        topBar = topBar,
+        bottomBar = bottomBar,
+        contentWindowInsets = WindowInsets.safeDrawing,
     ) { paddingValues ->
         Surface(
             modifier = Modifier.padding(paddingValues),

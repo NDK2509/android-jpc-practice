@@ -15,20 +15,28 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.something.R
 import com.example.something.ui.components.core.SButton
+import com.example.something.ui.navigation.Routes
 import com.example.something.ui.viewmodels.WelcomeViewModel
 import kotlinx.coroutines.delay
 
 @Composable
 fun WelcomeScreen(
-    navigatorController: NavController,
+    navController: NavController,
     viewModel: WelcomeViewModel = hiltViewModel()
 ) {
+    fun onClick() {
+        navController.navigate(Routes.Home.route)
+    }
+
     LaunchedEffect(Unit) {
         viewModel.onFocus()
     }
@@ -87,7 +95,7 @@ fun WelcomeScreen(
         ) {
             Text(
                 text = "Welcome to Something App!",
-                style = MaterialTheme.typography.headlineMedium
+                style = MaterialTheme.typography.titleLarge,
             )
         }
 
@@ -100,8 +108,35 @@ fun WelcomeScreen(
         ) {
             SButton(
                 text = "Get started!",
-                onClick = {}
+                onClick = { onClick() },
+                modifier = Modifier.fillMaxWidth(),
+                icon = {
+                    Image(
+                        painterResource(R.drawable.arrow_forward),
+                        "Right arrow icon",
+                        modifier = Modifier.size(16.dp),
+                        colorFilter = ColorFilter.tint(Color.White)
+                    )
+                }
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun WelcomeScreenPreview() {
+    SButton(
+        text = "Get started!",
+        onClick = {},
+        modifier = Modifier.fillMaxWidth(),
+        icon = {
+            Image(
+                painterResource(R.drawable.arrow_forward),
+                "Right arrow icon",
+                modifier = Modifier.size(16.dp),
+                colorFilter = ColorFilter.tint(Color.White)
+            )
+        }
+    )
 }

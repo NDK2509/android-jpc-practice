@@ -1,6 +1,5 @@
 package com.example.something.ui.components.core
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.widthIn
@@ -23,14 +22,10 @@ fun SButton(
     icon: @Composable () -> Unit = {},
 ) {
     Button(
-        onClick = {},
-        modifier = modifier
-            .widthIn(min = 100.dp)
-            .border(
-                width = 1.dp,
-                color = Color.Black,
-                shape = RoundedCornerShape(100)
-            )
+        onClick = onClick,
+        modifier = modifier.widthIn(min = 100.dp),
+        shape = RoundedCornerShape(100),
+        enabled = enabled,
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),

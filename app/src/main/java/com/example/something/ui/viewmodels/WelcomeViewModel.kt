@@ -9,6 +9,7 @@ import javax.inject.Inject
 class WelcomeViewModel @Inject constructor(
     private val preferenceManager: PreferenceManager
 ) : ViewModel() {
+    fun isFirstEnterWelcome(): Boolean = preferenceManager.isFirstEnterWelcome()
     fun onFocus() {
         preferenceManager.setFirstEnterWelcome(true)
     }

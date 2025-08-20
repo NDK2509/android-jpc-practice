@@ -17,8 +17,8 @@ import com.example.something.R
 
 @Composable
 fun STopBar(
-    title: String,
-    navController: NavController?,
+    title: String? = null,
+    navController: NavController? = null,
     titleStyle: TextStyle? = null,
     leftItem: @Composable () -> Unit = {
         IconButton(
@@ -27,7 +27,7 @@ fun STopBar(
             }
         ) {
             Icon(
-                painterResource(R.drawable.arrow_back),
+                painterResource(R.drawable.ic_arrow_back),
                 "Back",
                 tint = Color.Black,
                 modifier = Modifier.size(20.dp)
@@ -52,7 +52,7 @@ fun STopBar(
         Box(
             modifier = Modifier.align(Alignment.Center)
         ) {
-            Text(text = title, style = titleStyle ?: TextStyle.Default)
+            title?.let { Text(text = it, style = titleStyle ?: TextStyle.Default) }
         }
         Box(
             modifier = Modifier.align(Alignment.CenterEnd)

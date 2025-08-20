@@ -33,10 +33,15 @@ fun WelcomeScreen(
     navController: NavController,
     viewModel: WelcomeViewModel = hiltViewModel()
 ) {
-    fun onClick() {
+    fun navigateToHome() {
         navController.navigate(Routes.Home.route)
     }
 
+    LaunchedEffect(Unit) {
+        if (viewModel.isFirstEnterWelcome()) {
+            navigateToHome()
+        }
+    }
     LaunchedEffect(Unit) {
         viewModel.onFocus()
     }
@@ -108,11 +113,11 @@ fun WelcomeScreen(
         ) {
             SButton(
                 text = "Get started!",
-                onClick = { onClick() },
+                onClick = { navigateToHome() },
                 modifier = Modifier.fillMaxWidth(),
                 icon = {
                     Image(
-                        painterResource(R.drawable.arrow_forward),
+                        painterResource(R.drawable.ic_arrow_forward),
                         "Right arrow icon",
                         modifier = Modifier.size(16.dp),
                         colorFilter = ColorFilter.tint(Color.White)
@@ -132,7 +137,7 @@ fun WelcomeScreenPreview() {
         modifier = Modifier.fillMaxWidth(),
         icon = {
             Image(
-                painterResource(R.drawable.arrow_forward),
+                painterResource(R.drawable.ic_arrow_forward),
                 "Right arrow icon",
                 modifier = Modifier.size(16.dp),
                 colorFilter = ColorFilter.tint(Color.White)

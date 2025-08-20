@@ -19,11 +19,17 @@ fun MainLayout(
         bottomBar = bottomBar,
         contentWindowInsets = WindowInsets.safeDrawing,
     ) { paddingValues ->
+        val bottomPadding = paddingValues.calculateBottomPadding()
         Surface(
-            modifier = Modifier.padding(paddingValues),
+            modifier = Modifier
+                .padding(
+                    start = DEFAULT_PADDING,
+                    end = DEFAULT_PADDING,
+                    bottom = bottomPadding
+                )
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top)),
             color = MaterialTheme.colorScheme.background
         ) {
-            val bottomPadding = paddingValues.calculateBottomPadding()
             Column(
                 modifier = Modifier
                     .fillMaxSize()

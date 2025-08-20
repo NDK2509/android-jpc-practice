@@ -14,6 +14,7 @@ android {
         applicationId = "com.example.something"
         minSdk = 24
         targetSdk = 35
+        compileSdk = 36
         versionCode = 1
         versionName = "1.0"
 

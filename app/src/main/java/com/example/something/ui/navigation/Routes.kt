@@ -13,4 +13,5 @@ sealed class Routes(val route: String, vararg params: String) {
 
     object Welcome : Routes("Welcome")
     object Home : Routes("Home")
+    object Notes : Routes("Notes")
 }
